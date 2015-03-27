@@ -1,0 +1,22 @@
+.bar{
+	background:url("../images/Top.png");
+	
+}
+  #center{ 
+     position: absolute; left: 33%; top: 45%; width: 1000px
+}
+  #center2{ 
+     position: absolute; left: 33%; top: 24%; width: 1000px
+}
+ 
+  #bottom{ 
+     position: absolute;  top: 95%; width: 98%
+}
+ 
+#smalltable{
+  background-color: transparent;
+  width: 30%;
+  border-top: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+ 
+}
