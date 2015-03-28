@@ -53,7 +53,23 @@
     <th style="text-align:center;">总体评价</th>
     <th style="text-align:center;">评价人数</th>
    
-    
+  <?php 
+    foreach ($rankRecs as $key => $rankRec) 
+    {
+  ?>
+  <tr align=center style=" font-size:15px;">
+    <td> <a href=""><?=$rankRec['tname']?></a></td>
+    <td> <?=$rankRec['tapartment']?></td>
+    <td> <?=$rankRec['score1']?></td>
+    <td> <?=$rankRec['score2']?></td>
+    <td> <?=$rankRec['score3']?></td>
+    <td style="color:#FF0000; font-weight: bold; font-size:20px;"> <?=$rankRec['total']?></td>
+    <td> <?=$rankRec['cnum']?></td>
+  </tr>
+  <?php 
+    }
+  ?>
+
   </tr>
   <tr align=center style=" font-size:15px;">
    <td> <a href="RateInstructor.html">汤庸</a></td>

@@ -88,7 +88,21 @@
     <th style="text-align:center;">内容</th>
      <th style="text-align:center;">时间</th>
    
-    
+  <?php 
+    foreach ($comments as $key => $comment) 
+    {
+  ?>
+  <tr align=center style=" font-size:15px;">
+    <td> <?=$comment['num']?></td>
+    <td> <?=$comment['username']?></td>
+    <td> <?=$comment['apartment']?></td>
+    <td> <?=$comment['comments']?></td>
+    <td> <?=$comment['rdate']?></td>
+  </tr>
+  <?php 
+    }
+  ?>
+
   </tr>
   <tr align=center style=" font-size:15px;">
    <td> 1 </td>

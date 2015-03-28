@@ -81,10 +81,68 @@
         //我来评师
         public function rankprofessors()
         {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $recordNum = 0;
+            $rankData = array();
+
+            //获取评价教授信息
+            $table = 'rankaction';
+            $where = array('rtype' =>1 );
+
+            $mdb = MDBHelper::GenerateClient();
+            $rankResArr = $mdb->query($table, $where);
+
+            //根据targetid为key建立数组
+            foreach ($rankResArr as $key => $rankRes) 
+            {
+                $rankResArrSorted[$rankRes['targetid']][] = $rankRes;
+            }
+
+            //根据targetid查找评价对象相关信息
+            foreach ($rankResArrSorted as $key => $targetrankArr) 
+            {
+                $recordNum = count($targetrankArr);
+                $targetid = $key;
+
+                $teacherInfo = $mdb->query('teachers', array('tid' =>intval($targetid)));
+
+                if (!empty($teacherInfo) && (count($teacherInfo) == 1) )
+                {
+                    $rankData[$key]['tname'] = $teacherInfo[0]['tname'];
+                    $rankData[$key]['tapartment'] = $teacherInfo[0]['tapartment'];
+
+
+                    foreach ($targetrankArr as $num => $targetrank) 
+                    {
+                        //根据$key获取score1,score2,score3的总数
+                        $score1 += $targetrank['score1'];
+                        $score2 += $targetrank['score2'];
+                        $score3 += $targetrank['score3'];
+                    }
+
+                    //获取score1,score2,score3的平均数
+                    $scoreAvg1 = $score1 / $recordNum;
+                    $scoreAvg2 = $score2 / $recordNum;
+                    $scoreAvg3 = $score3 / $recordNum;
+                    $totalScore = ($scoreAvg1 + $scoreAvg2 + $scoreAvg3) / 3;
+    
+                    $rankData[$key]['score1'] = round($scoreAvg1,1);
+                    $rankData[$key]['score2'] = round($scoreAvg2,1);
+                    $rankData[$key]['score3'] = round($scoreAvg3,1);
+                    $rankData[$key]['total'] = round($totalScore,1);
+                    //评价人数
+                    $rankData[$key]['cnum'] = $recordNum;
+                }
+            }
+
+            unset($rankResArrSorted);
+            $retdata = array('rankRecs' => $rankData);
             //使用helper的函数base_url()
             $this->load->helper('url');
 
-            $this->load->view('rankprofessors');
+            $this->load->view('rankprofessors', $retdata);
         }
 
         //相关课程
@@ -123,9 +181,27 @@
             $mdb = MDBHelper::GenerateClient();
             $lessonsArr = $mdb->query($table, $where);
 
+            //获取课程相关评论
+            $commentArr = $mdb->query('rankaction', array('rtype' => 2, 'targetid' => $lid));
+
+            //根据userId获取用户相关信息
+            foreach ($commentArr as $key => $comment) 
+            {
+                $userid = $comment['userid'];
+
+                $userInfo = $mdb->query('users', array('userid' =>intval($userid)));
+
+                if (!empty($userInfo) && (count($userInfo) == 1) )
+                {
+                    $commentArr[$key]['num'] = $key + 1;
+                    $commentArr[$key]['username'] = $userInfo[0]['username'];
+                    $commentArr[$key]['apartment'] = $userInfo[0]['apartment'];
+                }
+            }
+
             if (!empty($lessonsArr) && (count($lessonsArr) == 1) )
             {
-                $data = array('lesson' => $lessonsArr[0] );
+                $data = array('lesson' => $lessonsArr[0], 'comments' => $commentArr);
 
                 $this->load->helper('url');
                 $this->load->view('ratecourse', $data);
