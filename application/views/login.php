@@ -43,7 +43,7 @@
 <img src="<?=base_url().'static/images/Shi.png'?>" style="position: absolute; left:49%; top: 15% ; "width="100px" height="80px" />
 
 
-<form name="form1" method="post"  action="abc.html"  style="position: absolute; left:40%; top: 30% ; "> 
+<form name="form1" method="post"  action="<?=base_url().'login/'?>"  style="position: absolute; left:40%; top: 30% ; "> 
 <table> 
 
 
@@ -59,7 +59,7 @@
 <tr> <td style="color:#333333; font-weight: bold; "> 
      密码： 
 </td> <td> 
-<input id="text1" type="text" name="text1" onblur="check()"> 
+<input id="text1" type="text" name="text2" onblur="check()"> 
 <div id="div1" style="display:inline"> 
 </div> 
 </td> </tr> 
@@ -78,7 +78,7 @@
 </td></tr>
 
 <tr><td></td><td align=right>
-<a href="Register.html" style="color:#000000; font-weight: bold; text-decoration:underline;"  >现在注册！</a>
+<a href="<?=base_url().'register/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  >现在注册！</a>
 </td></tr>
 
 <tr > <td > 

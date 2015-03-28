@@ -14,8 +14,13 @@
         
         <a href="<?=base_url()?>"  ><img src="<?=base_url().'static/images/Zuishi.png'?>" width="100px" height="50px"></a>
    <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?=base_url().'indexAction/goregister/'?>">注册</a></li>
-        <li><a href="<?=base_url().'indexAction/gologin/'?>">登录</a></li>
+    <?php 
+    
+    if (isset($_SESSION['username'])) {
+      echo "<li><a>欢迎你，".$_SESSION['username']."</a></li>"; }
+      else { echo "<li><a href='".base_url()."indexAction/goregister/'>注册</a></li>
+        <li><a href='".base_url()."indexAction/gologin/'>登录</a></li>" ;}?>
+
       </ul>
       </div>
       </nav>

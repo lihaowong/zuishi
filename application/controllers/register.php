@@ -101,7 +101,7 @@
             if (!empty($password) && !empty($password2) && ( $password == $password2 ) && strlen($password) >= 4 && strlen($password) <= 12)
             {
                 $password = Utils::EscapeDBInput($password);
-                $password2 = Utils::EscapeDBInput($password2);
+                $password = md5($password);
             }
             else
             {
@@ -167,7 +167,12 @@
             if (!empty($nameArr))
             {
                     //注册成功，存入session，跳转到主页或评师页面
-
+                    session_start();    //启动Session
+                    if (!isset($_SESSION['username']))
+                    {
+                        $_SESSION['username'] = $username;
+                    } 
+                    //使用$_SESSION['username']
 
                     //使用helper的函数base_url()
                     $this->load->helper('url');
@@ -179,7 +184,12 @@
                 if ($mdb->insert($table, $data))
                 {
                     //注册成功，存入session，跳转到主页或评师页面
-
+                    session_start();    //启动Session
+                    if (!isset($_SESSION['username']))
+                    {
+                        $_SESSION['username'] = $username;
+                    } 
+                    //使用$_SESSION['username']
 
                     //使用helper的函数base_url()
                     $this->load->helper('url');
