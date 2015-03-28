@@ -47,12 +47,20 @@
     <th style="text-align:center;">开课学院</th>
     <th style="text-align:center;">任课老师</th>  
   </tr>
+
+  <?php 
+    foreach ($lessons as $key => $lesson) 
+    {
+  ?>
   <tr align=center style=" font-size:15px;">
-   <td> <a href="CommentCourse.html">数据结构</a></td>
-    <td> 专业必修课</td>
-   <td> 计算机学院</td>
-   <td> 黄煜廉</td> 
+    <td> <a href="<?=base_url().'indexAction/lessondetails/'.$lesson['lid'].'/'?>"><?=$lesson['lname']?></a></td>
+    <td> <?=$lesson['ltype']?></td>
+    <td> <?=$lesson['lapartment']?></td>
+    <td> <?=$lesson['lteachers']?></td>
   </tr>
+  <?php 
+    }
+  ?>
 
   <tr align=center style=" font-size:15px;">
    <td> <a href="CommentCourse.html">编译原理</a></td>

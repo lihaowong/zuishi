@@ -55,11 +55,12 @@
                 exit(0);
             }
 
+            $tid = intval($tid);
             $table = 'teachers';
-            $where = array('tid' => strval($tid));
+            $where = array('tid' =>$tid );
 
             $mdb = MDBHelper::GenerateClient();
-            $teachersArr = $mdb->query('teachers', array('tid' => 1));
+            $teachersArr = $mdb->query($table, $where);
 
             if (!empty($teachersArr) && (count($teachersArr) == 1) )
             {
@@ -89,19 +90,84 @@
         //相关课程
         public function lessons()
         {
+            //从数据库获取课程相关信息
+            $table = "lessons";
+
+            $mdb = MDBHelper::GenerateClient();
+            $teachersArr = $mdb->query($table, "");
+
+            $data = array('lessons' => $teachersArr);
+
+
             //使用helper的函数base_url()
             $this->load->helper('url');
 
-            $this->load->view('lessons');
+            $this->load->view('lessons', $data);
+        }
+
+        //查看某课程详细信息
+        public function lessondetails()
+        {
+            $lid = $this->uri->segment(3);
+
+            if (empty($lid) || !is_numeric($lid)) 
+            {
+                echo json_encode(array('status'=>'99','msg'=>'参数出错!'));
+                exit(0);
+            }
+
+            $lid = intval($lid);
+            $table = 'lessons';
+            $where = array('lid' =>$lid );
+
+            $mdb = MDBHelper::GenerateClient();
+            $lessonsArr = $mdb->query($table, $where);
+
+            if (!empty($lessonsArr) && (count($lessonsArr) == 1) )
+            {
+                $data = array('lesson' => $lessonsArr[0] );
+
+                $this->load->helper('url');
+                $this->load->view('ratecourse', $data);
+            }
+            else
+            {
+                $this->load->helper('url');
+                $this->load->view('404');
+            }
         }
 
         //畅所欲言
         public function freetalk()
         {
+            //获取数据库畅所欲言的数据
+            $table = 'rankaction';
+            $where = array('rtype' =>3 );
+
+            $mdb = MDBHelper::GenerateClient();
+            $freetalkArr = $mdb->query($table, $where);
+
+            //根据userId获取用户相关信息
+            foreach ($freetalkArr as $key => $freetalk) 
+            {
+                $userid = $freetalk['userid'];
+
+                $userInfo = $mdb->query('users', array('userid' =>intval($userid)));
+
+                if (!empty($userInfo) && (count($userInfo) == 1) )
+                {
+                    $freetalkArr[$key]['num'] = $key + 1;
+                    $freetalkArr[$key]['username'] = $userInfo[0]['username'];
+                    $freetalkArr[$key]['apartment'] = $userInfo[0]['apartment'];
+                }
+            }
+
+            $data = array('freetalks' => $freetalkArr );
+
             //使用helper的函数base_url()
             $this->load->helper('url');
 
-            $this->load->view('freetalk');
+            $this->load->view('freetalk', $data);
         }
 
         //前往登录

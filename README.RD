@@ -49,12 +49,10 @@ lessons:(json)
 rankaction:(json)
 {
 	"rid": 1,			//行为id
-    "rtype": 1,         //评价类型1：教授 2：课程
+  "rtype": 1,         //评价类型1：教授 2：课程 3.畅所欲言
 	"targetid": 1,		//所评价教授或课程id
 	"userid": 1,		//进行评价的用户id
-	"expression": 4,	//表达清晰分数
-	"teaching": 3,		//教学严谨分数
-	"patience": 4,		//热情耐心分数
+	"score": "1:4,2:3,3:4",	//1:表达清晰分数 2:教学严谨分数 3.热情耐心分数
 	"comments": "我很喜欢这个老师",		//用户评价
 	"rdate": "2015-03-26 20:00:00"		//评价时间
 }
@@ -62,3 +60,4 @@ rankaction:(json)
 4.MongoDB数据库操作类：
 MDBUtils.php
 MDBHelper.php
+
