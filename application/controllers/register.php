@@ -167,7 +167,7 @@
             if (!empty($nameArr))
             {
                     //注册成功，存入session，跳转到主页或评师页面
-                    session_start();    //启动Session
+                    
                     if (!isset($_SESSION['username']))
                     {
                         $_SESSION['username'] = $username;
@@ -184,7 +184,7 @@
                 if ($mdb->insert($table, $data))
                 {
                     //注册成功，存入session，跳转到主页或评师页面
-                    session_start();    //启动Session
+                    
                     if (!isset($_SESSION['username']))
                     {
                         $_SESSION['username'] = $username;

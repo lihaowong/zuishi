@@ -31,10 +31,50 @@
         //名师简介
         public function professors()
         {
+            //从数据库获取教授相关信息
+            $table = "teachers";
+
+            $mdb = MDBHelper::GenerateClient();
+            $teachersArr = $mdb->query($table, "");
+
+            $data = array('teachers' => $teachersArr);
             //使用helper的函数base_url()
             $this->load->helper('url');
 
-            $this->load->view('professors');
+            $this->load->view('professors', $data);
+        }
+
+        //查看教授详情
+        public function details()
+        {
+            $tid = $this->uri->segment(3);
+
+            if (empty($tid) || !is_numeric($tid)) 
+            {
+                echo json_encode(array('status'=>'99','msg'=>'参数出错!'));
+                exit(0);
+            }
+
+            $table = 'teachers';
+            $where = array('tid' => strval($tid));
+
+            $mdb = MDBHelper::GenerateClient();
+            $teachersArr = $mdb->query('teachers', array('tid' => 1));
+
+            if (!empty($teachersArr) && (count($teachersArr) == 1) )
+            {
+                $data = array('teacher' => $teachersArr[0] );
+
+                $this->load->helper('url');
+                $this->load->view('instructor', $data);
+            }
+            else
+            {
+                $this->load->helper('url');
+                $this->load->view('404');
+            }
+    
+
         }
 
         //我来评师
