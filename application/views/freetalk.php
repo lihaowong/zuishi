@@ -9,10 +9,7 @@
 
  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-  
-        
 
-    
         <a href="<?=base_url()?>" style="float: left;"><img src="<?=base_url().'static/images/Zuishi.png'?>" width="100px" height="50px"></a>
       
         <a class="navbar-brand" href="<?=base_url().'indexAction/professors/'?>" >名师简介</a>
@@ -41,6 +38,7 @@
 </head>
 <body>
 
+<form name="form3" method="post" class="left" action="<?=base_url().'rateCommit/'?>" >
 
 <table class="table table-striped table-hover table-condensed" style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  >
   <tr align=center>
@@ -124,17 +122,20 @@
      <td> ........</td>
   </tr>
 
-
-
 </table>
 
+<input type="hidden" name="rtype"  value="3"/>
+<input type="hidden" name="score1"  value="0"/>
+<input type="hidden" name="score2"  value="0"/>
+<input type="hidden" name="score3"  value="0"/>
+<input type="hidden" name="tid"  value="0"/>
 
 <textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:35%; top: 65%; font-size:15px;word-break:break-all;"></textarea>
 
  <button type="submit" style="position: absolute; left:44%; top: 84%;" class="btn btn-default">提交</button>
 
 
-
+</form>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">

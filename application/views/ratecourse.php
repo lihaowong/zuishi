@@ -43,10 +43,10 @@
 
 <body>
 
-
+<form name="form2" method="post" class="left" action="<?=base_url().'rateCommit/'?>" >
 
 <img src="<?=base_url().'static/'.$lesson['limage']?>" style="position: absolute; left:20%; top: 15% ; "width="180px" height="180px" />
-    <form action="" method="get" class="left">
+
 
 <p>
 <font size="6" style="position: absolute; left:40%; top: 15% ;font-weight: bold; ">
@@ -162,13 +162,19 @@
      <td> ........</td>
   </tr>
 
-
-
 </table>
+
+<input type="hidden" name="rtype"  value="2"/>
+<input type="hidden" name="score1"  value="0"/>
+<input type="hidden" name="score2"  value="0"/>
+<input type="hidden" name="score3"  value="0"/>
+<input type="hidden" name="tid"  value="<?=$lesson['lid'] ?>"/>
+
 <textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:43%; top: 96%; font-size:15px;word-break:break-all;"></textarea>
 
 <button type="submit" style="position: absolute; left:52%; top: 116%;" class="btn btn-default">提交</button>
 
+</form>
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">
 

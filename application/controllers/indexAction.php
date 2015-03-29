@@ -26,7 +26,7 @@
             $this->load->helper('url');
 
             $this->load->view('searchResult', $data);
-        }        
+        }  
 
         //名师简介
         public function professors()
@@ -179,6 +179,7 @@
 
             if (!empty($teacherInfo) && (count($teacherInfo) == 1) )
             {
+                $rankData['tid'] = $tid;
                 $rankData['tname'] = $teacherInfo[0]['tname'];
                 $rankData['trank'] = $teacherInfo[0]['trank'];
                 $rankData['tapartment'] = $teacherInfo[0]['tapartment'];

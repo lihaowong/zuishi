@@ -50,7 +50,7 @@ rankaction:(json)
 {
 	"rid": 1,			  //行为id
   "rtype": 1,     //评价类型1：教授 2：课程 3.畅所欲言
-	"targetid": 1,	//所评价教授或课程id
+	"targetid": 1,	//所评价教授或课程id,畅所欲言为0
 	"userid": 1,		//进行评价的用户id
 	"score1": 4,	  //1:表达清晰分数  
   "score2": 3,    //2:教学严谨分数

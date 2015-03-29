@@ -41,8 +41,7 @@
 </head>
 <body>
 
-
-
+<form name="form1" method="post" action="<?=base_url().'rateCommit/'?>" >
 
   <img src="<?=base_url().'static/images/instructors/Tangyong.jpg'?>" style="position: absolute; left:20%; top: 15% ; "width="180px" height="180px" />
     <form action="" method="get" class="left">
@@ -161,33 +160,39 @@
 
 </table>
 
+
 <div style="position: absolute; left:45%; top: 90%; font-size:17px;">
-<form >
-<p>表达清晰：<input type="radio" name="a" value="male" /> 1
-<input type="radio" name="a" value="female" /> 2
-<input type="radio" name="a" value="female" /> 3
-<input type="radio" name="a" value="female" /> 4
-<input type="radio" name="a" value="female" /> 5</p>
 
-<p>教学严谨：<input type="radio" name="b" value="male" /> 1
-<input type="radio" name="b" value="female" /> 2
-<input type="radio" name="b" value="female" /> 3
-<input type="radio" name="b" value="female" /> 4
-<input type="radio" name="b" value="female" /> 5</p>
+<input type="hidden" name="rtype"  value="1"/>
+  <p>表达清晰：
+  <input type="radio" name="score1" value="1" /> 1
+  <input type="radio" name="score1" value="2" /> 2
+  <input type="radio" name="score1" value="3" /> 3
+  <input type="radio" name="score1" value="4" /> 4
+  <input type="radio" name="score1" value="5" /> 5</p>
 
-<p>热情耐心：<input type="radio" name="a" value="male" /> 1
-<input type="radio" name="c" value="female" /> 2
-<input type="radio" name="c" value="female" /> 3
-<input type="radio" name="c" value="female" /> 4
-<input type="radio" name="c" value="female" /> 5</p>
+  <p>教学严谨：<input type="radio" name="score2" value="1" /> 1
+  <input type="radio" name="score2" value="2" /> 2
+  <input type="radio" name="score2" value="3" /> 3
+  <input type="radio" name="score2" value="4" /> 4
+  <input type="radio" name="score2" value="5" /> 5</p>
 
-</form>
-</div>
+  <p>热情耐心：<input type="radio" name="score3" value="1" /> 1
+  <input type="radio" name="score3" value="2" /> 2
+  <input type="radio" name="score3" value="3" /> 3
+  <input type="radio" name="score3" value="4" /> 4
+  <input type="radio" name="score3" value="5" /> 5</p>
+
+<input type="hidden" name="tid"  value="<?=$basicInfo['tid']?>"/>
 
 
 <textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:43%; top: 108%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="submit" style="position: absolute; left:52%; top: 127%;" class="btn btn-default">提交</button>
+ <button type="image" style="position: absolute; left:52%; top: 250%;" class="btn btn-default">提交</button>
+
+</div>
+</form>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">
