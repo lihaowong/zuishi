@@ -13,19 +13,37 @@
 
         public function search()
         {
+            $retdata = array();
 
             //接收搜索索引
             $info = Utils::GetValue("info");
 
-            //搜索数据库
-            
+            $info = Utils::EscapeDBInput($info);
 
-            $data = array('search' => $info);
+            $mdb = MDBHelper::GenerateClient();
+
+            //搜索教授
+            $teacherSearch = array('tname' => $info);
+            $teacherInfoArr = $mdb->query('teachers', $teacherSearch);
+
+            //搜索课程
+            $lessonSearch = array('lname' => $info);
+            $lessonInfoArr = $mdb->query('lessons', $lessonSearch);
+
+            if (!empty($teacherInfoArr))
+            {
+                $retdata['teacher'] =  $teacherInfoArr[0];
+            }
+
+            if (!empty($lessonInfoArr))
+            {
+                $retdata['lesson'] =  $lessonInfoArr[0];
+            }
 
             //使用helper的函数base_url()
             $this->load->helper('url');
 
-            $this->load->view('searchResult', $data);
+            $this->load->view('searchResult', $retdata);
         }  
 
         //名师简介

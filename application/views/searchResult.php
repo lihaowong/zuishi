@@ -22,9 +22,9 @@
 
    <ul class="nav navbar-nav navbar-right">
 
-    <form class="navbar-form navbar-left" role="search">
+    <form action="<?=base_url().'indexAction/search/'?>" class="navbar-form navbar-left" role="search" >
         <div class="form-group">
-          <input type="text" class="form-control"  size="30" placeholder="不满意？继续查找老师名/课程名">
+          <input type="text" class="form-control" name="info" size="30" placeholder="不满意？继续查找老师名/课程名">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
       </form>
@@ -51,25 +51,33 @@
     <form action="" method="get" class="left">
 
 <table border="0" style="position: absolute; left:28%; top: 22% ;"   width=250 align=center>
- 
-  <tr>
-  <td rowspan="3">
-  <img src="<?=base_url().'static/images/instructors/Tangyong.jpg'?>" width="80px" height="80px" />
-    </td>
-     <tr>
-    <td align=center> <a href="RateInstructor.html" ><font size="5" style="font-weight: bold; ">
-汤庸</a> </td>
-    <td align=center>  男</td>   
-    </tr>
+
+ <?php if (isset($teacher))
+ {
+ ?>
     <tr>
-  
-    <td align=center> 计算机学院</td>
-     <td align=center>  教授</td>
+    <td rowspan="3">
+    <img src="<?=base_url().'static/'.$teacher['image'] ?>" width="80px" height="80px" />
+      </td>
+       <tr>
+      <td align=center> <a href="<?=base_url().'indexAction/details/'.$teacher['tid'].'/'?>" >
+        <font size="5" style="font-weight: bold; ">
+            <?=$teacher['tname']?></a> </td>
+      <td align=center>  <?=$teacher['tsex']?></td>   
+      </tr>
+      <tr>
+    
+      <td align=center> <?=$teacher['trank']?></td>
+       <td align=center>  <?=$teacher['tapartment']?></td>
+      </tr>
     </tr>
-  </tr>
-<tr > <td > 
-    &nbsp; </td>
-</tr> 
+    <tr > <td > 
+        &nbsp; </td>
+    </tr> 
+ <?php 
+  }
+ ?>
+
   <tr>
   <td rowspan="3">
   <img src="<?=base_url().'static/images/instructors/Lijianguo.jpg'?>" width="80px" height="80px" />
@@ -111,6 +119,32 @@
 </table>
 
 <table border="0" style="position: absolute; left:53.3%; top: 22% ; "  width=300 align=center>
+
+<?php if (isset($lesson))
+ {
+ ?>
+    <tr>
+    <td rowspan="3">
+    <img src="<?=base_url().'static/'.$lesson['limage'] ?>" width="80px" height="80px" />
+      </td>
+       <tr>
+      <td align=center> <a href="<?=base_url().'indexAction/lessondetails/'.$lesson['lid'].'/'?>" >
+        <font size="5" style="font-weight: bold; ">
+            <?=$lesson['lname']?></a> </td>
+      <td align=center>  <?=$lesson['ltype']?></td>   
+      </tr>
+      <tr>
+    
+      <td align=center> <?=$lesson['lapartment']?></td>
+       <td align=center>  <?=$lesson['lteachers']?></td>
+      </tr>
+    </tr>
+    <tr > <td > 
+        &nbsp; </td>
+    </tr> 
+ <?php 
+  }
+ ?>
   <tr>
   <td rowspan="3">
   <img src="<?=base_url().'static/images/textbooks/DataStructure.jpg'?>" width="80px" height="80px" />
@@ -149,13 +183,6 @@
     &nbsp; </td>
 </tr>
 
-<!--  for test
-<tr>
-  <td>
-      sssssssssssss:<?php echo $search ;?>
-  </td>
-</tr>
--->
 
 </table>
 

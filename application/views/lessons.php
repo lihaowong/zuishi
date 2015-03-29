@@ -21,9 +21,9 @@
 
    <ul class="nav navbar-nav navbar-right">
 
-    <form class="navbar-form navbar-left" role="search">
+    <form action="<?=base_url().'indexAction/search/'?>" class="navbar-form navbar-left" role="search" >
         <div class="form-group">
-          <input type="text" class="form-control"  size="30" placeholder="老师名/课程名">
+          <input type="text" class="form-control" name="info" size="30" placeholder="老师名/课程名">
         </div>
         <button type="submit" class="btn btn-default">搜索</button>
       </form>

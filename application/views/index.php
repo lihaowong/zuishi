@@ -42,14 +42,14 @@
   <div  style="float:left">
     <input name="search" style="height:35px;" type="image" src="<?=base_url().'static/images/SearchButton.png'?>" /></div>
   </div>
-  
+</form>  
   <div  style="position: absolute; left:40%; top: 55%; width: 98%">
   <a href="<?=base_url().'indexAction/professors/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  >名师简介</a>
    <a href="<?=base_url().'indexAction/rankprofessors/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  > 我来评师</a>
     <a href="<?=base_url().'indexAction/lessons/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  >相关课程</a>
      <a href="<?=base_url().'indexAction/freetalk/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  >畅所欲言</a>
      </div>
-</form>
+
 </div>
 
 
