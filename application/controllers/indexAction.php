@@ -145,6 +145,93 @@
             $this->load->view('rankprofessors', $retdata);
         }
 
+        //评价某个教授页面
+        public function gorate()
+        {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $recordNum = 0;
+            $rankData = array();  //存放基本信息和评价信息
+
+            //接收教授id
+            $tid = $this->uri->segment(3);
+
+            if (empty($tid) || !is_numeric($tid)) 
+            {
+                echo json_encode(array('status'=>'99','msg'=>'参数出错!'));
+                exit(0);
+            }
+
+            //获取教授信息
+            $tid = intval($tid);
+            $table = 'teachers';
+            $where = array('tid' =>$tid );
+
+            $mdb = MDBHelper::GenerateClient();
+            $teacherInfo = $mdb->query($table, $where);
+
+            //获取某教授评分和评价信息
+            $mdb = MDBHelper::GenerateClient();
+            $rankResArr = $mdb->query('rankaction', array('rtype' =>1,'targetid' =>$tid ));
+
+            $recordNum = count($rankResArr);
+
+            if (!empty($teacherInfo) && (count($teacherInfo) == 1) )
+            {
+                $rankData['tname'] = $teacherInfo[0]['tname'];
+                $rankData['trank'] = $teacherInfo[0]['trank'];
+                $rankData['tapartment'] = $teacherInfo[0]['tapartment'];
+
+
+                foreach ($rankResArr as $key => $targetrank) 
+                {
+                    //根据$key获取score1,score2,score3的总数
+                    $score1 += $targetrank['score1'];
+                    $score2 += $targetrank['score2'];
+                    $score3 += $targetrank['score3'];
+                }
+
+                //获取score1,score2,score3的平均数
+                $scoreAvg1 = $score1 / $recordNum;
+                $scoreAvg2 = $score2 / $recordNum;
+                $scoreAvg3 = $score3 / $recordNum;
+                $totalScore = ($scoreAvg1 + $scoreAvg2 + $scoreAvg3) / 3;
+
+                $rankData['score1'] = round($scoreAvg1,1);
+                $rankData['score2'] = round($scoreAvg2,1);
+                $rankData['score3'] = round($scoreAvg3,1);
+                $rankData['total'] = round($totalScore,1);
+                //评价人数
+                $rankData['cnum'] = $recordNum;
+
+                //根据userid获取评论人信息
+                foreach ($rankResArr as $key => $rankRec) 
+                {
+                    $userid = $rankRec['userid'];
+
+                    $userInfo = $mdb->query('users', array('userid' =>intval($userid)));
+
+                    if (!empty($userInfo) && (count($userInfo) == 1) )
+                    {
+                        $rankResArr[$key]['number'] = $key + 1;
+                        $rankResArr[$key]['username'] = $userInfo[0]['username'];
+                        $rankResArr[$key]['apartment'] = $userInfo[0]['apartment'];
+                    }
+                }
+
+                $data = array('basicInfo' => $rankData, 'comments'=>$rankResArr);
+                $this->load->helper('url');
+                $this->load->view('irate', $data);
+            }
+            else
+            {
+                $this->load->helper('url');
+                $this->load->view('404');
+            }
+
+        }
+
         //相关课程
         public function lessons()
         {

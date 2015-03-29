@@ -58,7 +58,7 @@
     {
   ?>
   <tr align=center style=" font-size:15px;">
-    <td> <a href=""><?=$rankRec['tname']?></a></td>
+    <td> <a href="<?=base_url().'indexAction/gorate/'.$key.'/'?>"><?=$rankRec['tname']?></a></td>
     <td> <?=$rankRec['tapartment']?></td>
     <td> <?=$rankRec['score1']?></td>
     <td> <?=$rankRec['score2']?></td>
