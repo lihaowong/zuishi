@@ -37,17 +37,34 @@
       </nav>
 </head>
 <body>
+ <span id="spanFirst"  style="position: absolute; left:16%; top: 10% ; ">第一页</span> 
+ <span id="spanPre" style="position: absolute; left:20%; top: 10% ; ">上一页</span> 
+ <span id="spanNext" style="position: absolute; left:24%; top: 10% ; ">下一页</span> 
+ <span id="spanLast" style="position: absolute; left:28%; top: 10% ; ">最后一页</span> 
+ <font  style="position: absolute; left:71%; top: 10% ; ">
+第</font>
+
+ <span id="spanPageNum" style="position: absolute; left:72.5%; top: 10% ; "></span>
+  <font  style="position: absolute; left:74%; top: 10% ; ">
+页</font>
+
+ <font  style="position: absolute; left:77%; top: 10% ; ">
+共</font>
+ <span id="spanTotalPage" style="position: absolute; left:78.5%; top: 10% ; "></span>
+  <font  style="position: absolute; left:80%; top: 10% ; ">
+页</font>
 
 <form name="form3" method="post" class="left" action="<?=base_url().'rateCommit/'?>" >
 
-<table class="table table-striped table-hover table-condensed" style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  >
+<table class="table table-striped table-hover table-condensed" id="mytable" style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  >
+
   <tr align=center>
     <th style="text-align:center;">编号</th>
     <th style="text-align:center;"> 用户名</th>
     <th style="text-align:center;">学院</th>
     <th style="text-align:center;">内容</th>
      <th style="text-align:center;">时间</th>
-   
+    <tbody id="table2">
   <?php 
     foreach ($freetalks as $key => $freetalk) 
     {
@@ -56,72 +73,14 @@
     <td> <?=$freetalk['num']?></td>
     <td> <?=$freetalk['username']?></td>
     <td> <?=$freetalk['apartment']?></td>
-    <td> <?=$freetalk['comments']?></td>
+    <td> <textarea  readonly="readonly"  cols="35" rows="2" style="  border:0;  
+    background-color:transparent; font-size:15px;word-break:break-all;"><?=$freetalk['comments']?></textarea> </td>
     <td> <?=$freetalk['rdate']?></td>
   </tr>
   <?php 
     }
   ?>
-
-  </tr>
-  <tr align=center style=" font-size:15px;">
-   <td> 1 </td>
-   <td> ABC</td>
-   <td> 计算机学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
-  </tr>
-  <tr align=center style=" font-size:15px;">
-   <td> 2 </td>
-   <td> BCD</td>
-   <td> 软件学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
-  </tr>
-  <tr align=center style=" font-size:15px;">
-   <td> 3 </td>
-   <td> CDE</td>
-   <td> 软件学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
-
-<tr align=center style=" font-size:15px;">
-   <td> 4 </td>
-   <td> DEF</td>
-   <td> 软件学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-<tr align=center style=" font-size:15px;">
-   <td> 5 </td>
-   <td> EFG</td>
-   <td> 软件学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
-<tr align=center style=" font-size:15px;">
-   <td> 6 </td>
-   <td> FGH</td>
-   <td> 计算机学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
-<tr align=center style=" font-size:15px;">
-   <td> 7 </td>
-   <td> GHI</td>
-   <td> 软件学院</td>
-   <td> ...............................................</td>
-     <td> ........</td>
-  </tr>
-
+</tbody>
 </table>
 
 <input type="hidden" name="rtype"  value="3"/>
@@ -130,12 +89,13 @@
 <input type="hidden" name="score3"  value="0"/>
 <input type="hidden" name="tid"  value="0"/>
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:35%; top: 65%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:35%; top: 72%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="submit" style="position: absolute; left:44%; top: 84%;" class="btn btn-default">提交</button>
+ <button type="submit" style="position: absolute; left:60%; top: 83%;" class="btn btn-default">提交</button>
 
 
 </form>
+
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container">
@@ -148,8 +108,167 @@
   </div>
 </nav>
 
+
+
+
       <script src="<?=base_url().'static/js/jquery-1.11.2.min.js'?>"></script>
       <script src="<?=base_url().'static/js/bootstrap.min.js'?>"></script>
 
 </body>
 </html>
+
+ <script>
+     var theTable = document.getElementById("table2");
+     var totalPage = document.getElementById("spanTotalPage");
+     var pageNum = document.getElementById("spanPageNum");
+
+
+     var spanPre = document.getElementById("spanPre");
+     var spanNext = document.getElementById("spanNext");
+     var spanFirst = document.getElementById("spanFirst");
+     var spanLast = document.getElementById("spanLast");
+
+
+     var numberRowsInTable = theTable.rows.length;
+     var pageSize = 5;
+     var page = 1;
+
+
+     //下一页
+     function next() {
+
+
+         hideTable();
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow + pageSize;
+         if (maxRow > numberRowsInTable) maxRow = numberRowsInTable;
+         for (var i = currentRow; i < maxRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         page++;
+
+
+         if (maxRow == numberRowsInTable) { nextText(); lastText(); }
+         showPage();
+         preLink();
+         firstLink();
+     }
+
+
+     //上一页
+     function pre() {
+
+
+         hideTable();
+
+
+         page--;
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow - pageSize;
+         if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+         for (var i = maxRow; i < currentRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+
+
+
+
+         if (maxRow == 0) { preText(); firstText(); }
+         showPage();
+         nextLink();
+         lastLink();
+     }
+
+
+     //第一页
+     function first() {
+         hideTable();
+         page = 1;
+         for (var i = 0; i < pageSize; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preText();
+         nextLink();
+         lastLink();
+     }
+
+
+     //最后一页
+     function last() {
+         hideTable();
+         page = pageCount();
+         currentRow = pageSize * (page - 1);
+         for (var i = currentRow; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preLink();
+         nextText();
+         firstLink();
+     }
+
+
+     function hideTable() {
+         for (var i = 0; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+     }
+
+
+     function showPage() {
+         pageNum.innerHTML = page;
+     }
+
+
+     //总共页数
+     function pageCount() {
+         var count = 0;
+         if (numberRowsInTable % pageSize != 0) count = 1;
+         return parseInt(numberRowsInTable / pageSize) + count;
+     }
+
+
+     //显示链接
+     function preLink() { spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>"; }
+     function preText() { spanPre.innerHTML = "上一页"; }
+
+
+     function nextLink() { spanNext.innerHTML = "<a href='javascript:next();'>下一页</a>"; }
+     function nextText() { spanNext.innerHTML = "下一页"; }
+
+
+     function firstLink() { spanFirst.innerHTML = "<a href='javascript:first();'>第一页</a>"; }
+     function firstText() { spanFirst.innerHTML = "第一页"; }
+
+
+     function lastLink() { spanLast.innerHTML = "<a href='javascript:last();'>最后一页</a>"; }
+     function lastText() { spanLast.innerHTML = "最后一页"; }
+
+
+     //隐藏表格
+     function hide() {
+         for (var i = pageSize; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+
+
+         totalPage.innerHTML = pageCount();
+         pageNum.innerHTML = '1';
+
+
+         nextLink();
+         lastLink();
+     }
+
+
+     hide();
+</script>

@@ -74,9 +74,11 @@
 </td>
 </tr>
 </table>
+ <button type="submit" style="position: absolute; left:48%; top: 80%;" class="btn btn-default">我来评价</button>
 
-<input src="<?=base_url().'static/images/IRate.png'?>"  type="image" style="position: absolute; left:48%; top: 80% ; "width="90px" height="40px" />
     <form action="" method="get" class="left">
+
+
 
 
 

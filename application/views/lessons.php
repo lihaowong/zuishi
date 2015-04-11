@@ -40,6 +40,23 @@
 </head>
 
 <body>
+
+<span id="spanFirst"  style="position: absolute; left:16%; top: 10% ; ">第一页</span> 
+ <span id="spanPre" style="position: absolute; left:20%; top: 10% ; ">上一页</span> 
+ <span id="spanNext" style="position: absolute; left:24%; top: 10% ; ">下一页</span> 
+ <span id="spanLast" style="position: absolute; left:28%; top: 10% ; ">最后一页</span> 
+ <font  style="position: absolute; left:71%; top: 10% ; ">
+第</font>
+
+ <span id="spanPageNum" style="position: absolute; left:72.5%; top: 10% ; "></span>
+  <font  style="position: absolute; left:74%; top: 10% ; ">
+页</font>
+
+ <font  style="position: absolute; left:77%; top: 10% ; ">
+共</font>
+ <span id="spanTotalPage" style="position: absolute; left:78.5%; top: 10% ; "></span>
+  <font  style="position: absolute; left:80%; top: 10% ; ">
+页</font>
 <table border="0"  class="table table-striped table-hover table-condensed" style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  cellspacing="0" width=500 align=center>
   <tr align=center>
     <th style="text-align:center;">课程名</th>
@@ -47,7 +64,7 @@
     <th style="text-align:center;">开课学院</th>
     <th style="text-align:center;">任课老师</th>  
   </tr>
-
+<tbody id="table2">
   <?php 
     foreach ($lessons as $key => $lesson) 
     {
@@ -62,19 +79,7 @@
     }
   ?>
 
-  <tr align=center style=" font-size:15px;">
-   <td> <a href="CommentCourse.html">编译原理</a></td>
-    <td> 专业任选课</td>
-   <td> 计算机学院</td>
-   <td> 黄煜廉、詹泳</td> 
-  </tr>
-  <tr align=center style=" font-size:15px;">
-   <td> <a href="CommentCourse.html">大学生创业基础</a></td>
-    <td> 公共选修课</td>
-   <td> 创业学院</td>
-   <td> 李凯</td> 
-  </tr>
- 
+ </tbody>
 
 </table>
 
@@ -98,3 +103,159 @@
 
 </body>
 </html>
+
+ <script>
+     var theTable = document.getElementById("table2");
+     var totalPage = document.getElementById("spanTotalPage");
+     var pageNum = document.getElementById("spanPageNum");
+
+
+     var spanPre = document.getElementById("spanPre");
+     var spanNext = document.getElementById("spanNext");
+     var spanFirst = document.getElementById("spanFirst");
+     var spanLast = document.getElementById("spanLast");
+
+
+     var numberRowsInTable = theTable.rows.length;
+     var pageSize = 15;
+     var page = 1;
+
+
+     //下一页
+     function next() {
+
+
+         hideTable();
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow + pageSize;
+         if (maxRow > numberRowsInTable) maxRow = numberRowsInTable;
+         for (var i = currentRow; i < maxRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         page++;
+
+
+         if (maxRow == numberRowsInTable) { nextText(); lastText(); }
+         showPage();
+         preLink();
+         firstLink();
+     }
+
+
+     //上一页
+     function pre() {
+
+
+         hideTable();
+
+
+         page--;
+
+
+         currentRow = pageSize * page;
+         maxRow = currentRow - pageSize;
+         if (currentRow > numberRowsInTable) currentRow = numberRowsInTable;
+         for (var i = maxRow; i < currentRow; i++) {
+             theTable.rows[i].style.display = '';
+         }
+
+
+
+
+         if (maxRow == 0) { preText(); firstText(); }
+         showPage();
+         nextLink();
+         lastLink();
+     }
+
+
+     //第一页
+     function first() {
+         hideTable();
+         page = 1;
+         for (var i = 0; i < pageSize; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preText();
+         nextLink();
+         lastLink();
+     }
+
+
+     //最后一页
+     function last() {
+         hideTable();
+         page = pageCount();
+         currentRow = pageSize * (page - 1);
+         for (var i = currentRow; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = '';
+         }
+         showPage();
+
+
+         preLink();
+         nextText();
+         firstLink();
+     }
+
+
+     function hideTable() {
+         for (var i = 0; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+     }
+
+
+     function showPage() {
+         pageNum.innerHTML = page;
+     }
+
+
+     //总共页数
+     function pageCount() {
+         var count = 0;
+         if (numberRowsInTable % pageSize != 0) count = 1;
+         return parseInt(numberRowsInTable / pageSize) + count;
+     }
+
+
+     //显示链接
+     function preLink() { spanPre.innerHTML = "<a href='javascript:pre();'>上一页</a>"; }
+     function preText() { spanPre.innerHTML = "上一页"; }
+
+
+     function nextLink() { spanNext.innerHTML = "<a href='javascript:next();'>下一页</a>"; }
+     function nextText() { spanNext.innerHTML = "下一页"; }
+
+
+     function firstLink() { spanFirst.innerHTML = "<a href='javascript:first();'>第一页</a>"; }
+     function firstText() { spanFirst.innerHTML = "第一页"; }
+
+
+     function lastLink() { spanLast.innerHTML = "<a href='javascript:last();'>最后一页</a>"; }
+     function lastText() { spanLast.innerHTML = "最后一页"; }
+
+
+     //隐藏表格
+     function hide() {
+         for (var i = pageSize; i < numberRowsInTable; i++) {
+             theTable.rows[i].style.display = 'none';
+         }
+
+
+         totalPage.innerHTML = pageCount();
+         pageNum.innerHTML = '1';
+
+
+         nextLink();
+         lastLink();
+     }
+
+
+     hide();
+</script>

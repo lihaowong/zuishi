@@ -40,9 +40,7 @@
 
 <body>
 
-  <div  style="float:left"><input name="search" style="height:35px;" type="image" src="<?=base_url().'static/images/SearchButton.png'?>" /></div>
-  </div>
-  
+
 </form>
 </div>
 <img src="<?=base_url().'static/images/RelatedInstructors.png'?>" style="position: absolute; left:35%; top: 15% ; "width="80px" height="23px" />
