@@ -75,13 +75,8 @@
 </td>
 </tr>
 </table>
- <button type="submit" style="position: absolute; left:48%; top: 80%;" class="btn btn-default">我来评价</button>
 
-    <form action="" method="get" class="left">
-
-
-
-
+ <a href="<?=base_url().'indexAction/gorate/'.$teacher['tid'].'/'?>"><input  type="button" style="position: absolute; left:48%; top: 80%;" class="btn btn-default" value="我来评价" /></a>
 
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
