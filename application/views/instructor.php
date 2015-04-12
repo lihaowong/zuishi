@@ -10,7 +10,7 @@
  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
 
-        <a href="Index.html" style="float: left;"><img src="<?=base_url().'static/images/Zuishi.png'?>" width="100px" height="50px"></a>
+        <a href="<?=base_url()?>" style="float: left;"><img src="<?=base_url().'static/images/Zuishi.png'?>" width="100px" height="50px"></a>
       
         <a class="navbar-brand" href="<?=base_url().'indexAction/professors/'?>" >名师简介</a>
         <a class="navbar-brand" href="<?=base_url().'indexAction/rankprofessors/'?>">我来评师</a>
