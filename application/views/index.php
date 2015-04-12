@@ -17,7 +17,8 @@
     <?php 
     
     if (isset($_SESSION['username'])) {
-      echo "<li><a>欢迎你，".$_SESSION['username']."</a></li>"; }
+      echo "<li><a>欢迎你，".$_SESSION['username']."</a></li>
+      <li><a href='".base_url()."indexAction/logout/'>退出</a></li>"; }
       else { echo "<li><a href='".base_url()."indexAction/goregister/'>注册</a></li>
         <li><a href='".base_url()."indexAction/gologin/'>登录</a></li>" ;}?>
 

@@ -361,6 +361,21 @@
             $this->load->view('login');
         }
 
+        //注销
+        public function logout()
+        {
+            if (isset($_SESSION['username']))
+            {
+                session_unset();
+                session_destroy();
+            }
+            
+            //使用helper的函数base_url()
+            $this->load->helper('url');
+
+            $this->load->view('index');
+        }
+
         //前往注册
         public function goregister()
         {

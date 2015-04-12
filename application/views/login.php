@@ -59,7 +59,7 @@
 <tr> <td style="color:#333333; font-weight: bold; "> 
      密码： 
 </td> <td> 
-<input id="text1" type="text" name="text2" onblur="check()"> 
+<input id="text1" type="password" name="text2" onblur="check()"> 
 <div id="div1" style="display:inline"> 
 </div> 
 </td> </tr> 
