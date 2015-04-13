@@ -38,6 +38,9 @@
       </nav>
 </head>
 <body>
+
+
+
  <span id="spanFirst"  style="position: absolute; left:16%; top: 10% ; ">第一页</span> 
  <span id="spanPre" style="position: absolute; left:20%; top: 10% ; ">上一页</span> 
  <span id="spanNext" style="position: absolute; left:24%; top: 10% ; ">下一页</span> 
@@ -90,9 +93,9 @@
 <input type="hidden" name="score3"  value="0"/>
 <input type="hidden" name="tid"  value="0"/>
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:35%; top: 72%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="117" rows="5" style="position: absolute; left:15%; top: 72%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="submit" style="position: absolute; left:60%; top: 83%;" class="btn btn-default">提交</button>
+ <button type="submit" style="position: absolute; left:87%; top: 83%;" class="btn btn-default">提交</button>
 
 
 </form>

@@ -87,21 +87,21 @@
 
 
 
- <span id="spanFirst"  style="position: absolute; left:21%; top: 45% ; ">第一页</span> 
- <span id="spanPre" style="position: absolute; left:25%; top: 45% ; ">上一页</span> 
- <span id="spanNext" style="position: absolute; left:29%; top: 45% ; ">下一页</span> 
- <span id="spanLast" style="position: absolute; left:33%; top: 45% ; ">最后一页</span> 
- <font  style="position: absolute; left:76%; top: 45% ; ">
+ <span id="spanFirst"  style="position: absolute; left:21%; top: 104% ; ">第一页</span> 
+ <span id="spanPre" style="position: absolute; left:25%; top: 104% ; ">上一页</span> 
+ <span id="spanNext" style="position: absolute; left:29%; top: 104% ; ">下一页</span> 
+ <span id="spanLast" style="position: absolute; left:33%; top: 104% ; ">最后一页</span> 
+ <font  style="position: absolute; left:77%; top: 104% ; ">
 第</font>
 
- <span id="spanPageNum" style="position: absolute; left:77.5%; top: 45% ; "></span>
-  <font  style="position: absolute; left:79%; top: 45% ; ">
+ <span id="spanPageNum" style="position: absolute; left:78.5%; top: 104% ; "></span>
+  <font  style="position: absolute; left:80%; top: 104% ; ">
 页</font>
 
- <font  style="position: absolute; left:82%; top: 45% ; ">
+ <font  style="position: absolute; left:83%; top: 104% ; ">
 共</font>
- <span id="spanTotalPage" style="position: absolute; left:83.5%; top: 45% ; "></span>
-  <font  style="position: absolute; left:85%; top: 45% ; ">
+ <span id="spanTotalPage" style="position: absolute; left:84.5%; top: 104% ; "></span>
+  <font  style="position: absolute; left:86%; top: 104% ; ">
 页</font>
 
 <table class="table table-striped table-hover table-condensed" style="position: absolute; left:20%; top: 50% ; word-break:break-all;"  >
@@ -134,7 +134,7 @@
 </table>
 
 
-<div style="position: absolute; left:20%; top: 110%; font-size:17px;">
+<div style="position: absolute; left:20%; top: 113%; font-size:17px;">
 
 <input type="hidden" name="rtype"  value="1"/>
   <p>表达清晰：<input type="radio" name="score1" value="1" /> 1
@@ -158,9 +158,9 @@
 <input type="hidden" name="tid"  value="<?=$basicInfo['tid']?>"/>
 
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="35" rows="5" style="position: absolute; left:140%; top: 0%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="60" rows="5" style="position: absolute; left:140%; top: 0%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="image" style="position: absolute; left:280%; top: 70%;" class="btn btn-default">提交</button>
+ <button type="image" style="position: absolute; left:370%; top: 70%;" class="btn btn-default">提交</button>
 
 </div>
 </form>

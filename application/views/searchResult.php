@@ -77,43 +77,7 @@
   }
  ?>
 
-  <tr>
-  <td rowspan="3">
-  <img src="<?=base_url().'static/images/instructors/Lijianguo.jpg'?>" width="80px" height="80px" />
-    </td>
-     <tr>
-    <td align=center> <a href="RateInstructor.html" ><font size="5" style="font-weight: bold; ">
-李建国</a> </td>
-    <td align=center>  男</td>   
-    </tr>
-    <tr>
-  
-    <td align=center> 计算机学院</td>
-     <td align=center>  副教授</td>
-    </tr>
-  </tr>
-<tr > <td > 
-    &nbsp; </td>
-</tr>
-
-    <tr>
-  <td rowspan="3">
-  <img src="<?=base_url().'static/images/instructors/Xiaojing.jpg'?>" width="80px" height="80px" />
-    </td>
-     <tr>
-    <td align=center> <a href="RateInstructor.html" ><font size="5" style="font-weight: bold; ">
-肖菁</a> </td>
-    <td align=center>  女</td>   
-    </tr>
-    <tr>
-  
-    <td align=center> 计算机学院</td>
-     <td align=center>  副教授</td>
-    </tr>
-  </tr>
-<tr > <td > 
-    &nbsp; </td>
-</tr>
+ 
 
 </table>
 
@@ -144,43 +108,7 @@
  <?php 
   }
  ?>
-  <tr>
-  <td rowspan="3">
-  <img src="<?=base_url().'static/images/textbooks/DataStructure.jpg'?>" width="80px" height="80px" />
-    </td>
-     <tr>
-    <td align=center> <a href="CommentCourse.html" ><font size="5" style="font-weight: bold; ">
-数据结构</a> </td>
-    <td align=center>  专业必修课</td>   
-    </tr>
-    <tr>
   
-    <td align=center> 计算机学院</td>
-     <td align=center> 黄煜廉 </td>
-    </tr>
-  </tr>
-<tr > <td > 
-    &nbsp; </td>
-</tr>
-
-<tr>
-  <td rowspan="3">
-  <img src="<?=base_url().'static/images/textbooks/Compilers.jpg'?>" width="80px" height="80px" />
-    </td>
-     <tr>
-    <td align=center> <a href="CommentCourse.html" ><font size="5" style="font-weight: bold; ">
-编译原理</a> </td>
-    <td align=center>  专业任选课</td>   
-    </tr>
-    <tr>
-  
-    <td align=center> 计算机学院</td>
-     <td align=center> 黄煜廉、詹泳 </td>
-    </tr>
-  </tr>
-<tr > <td > 
-    &nbsp; </td>
-</tr>
 
 
 </table>
