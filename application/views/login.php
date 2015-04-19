@@ -73,9 +73,7 @@
 <input name="" type="checkbox"  />记住密码
 </td> </tr>
 
-<tr><td></td><td align=right>
-<a href="" style="color:#000000; font-weight: bold; text-decoration:underline;"  >忘记密码？</a>
-</td></tr>
+
 
 <tr><td></td><td align=right>
 <a href="<?=base_url().'register/'?>" style="color:#000000; font-weight: bold; text-decoration:underline;"  >现在注册！</a>

@@ -60,7 +60,7 @@
 
 <form name="form3" method="post" class="left" action="<?=base_url().'rateCommit/'?>" >
 
-<table class="table table-striped table-hover table-condensed" id="mytable" style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  >
+<table class="table table-striped table-hover table-condensed" id="mytable"  style="position: absolute; left:15%; top: 15% ; word-break:break-all;"  >
 
   <tr align=center>
     <th style="text-align:center;">编号</th>
@@ -87,15 +87,17 @@
 </tbody>
 </table>
 
+
+
 <input type="hidden" name="rtype"  value="3"/>
 <input type="hidden" name="score1"  value="0"/>
 <input type="hidden" name="score2"  value="0"/>
 <input type="hidden" name="score3"  value="0"/>
 <input type="hidden" name="tid"  value="0"/>
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="117" rows="5" style="position: absolute; left:15%; top: 72%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="117" rows="4" style="border:solid 2px; border-color :#00cccc;position: absolute; left:15%; top: 72%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="submit" style="position: absolute; left:87%; top: 83%;" class="btn btn-default">提交</button>
+ <button type="submit" style="position: absolute; left:14.9%; top: 85%; width:963px;height:40px;"  class="btn btn-default"> 提交 </button>
 
 
 </form>

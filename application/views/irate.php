@@ -137,19 +137,19 @@
 <div style="position: absolute; left:20%; top: 113%; font-size:17px;">
 
 <input type="hidden" name="rtype"  value="1"/>
-  <p>表达清晰：<input type="radio" name="score1" value="1" /> 1
+  <p style="font-weight:bold;color:red;">表达清晰：<input type="radio" name="score1" value="1" /> 1
   <input type="radio" name="score1" value="2" /> 2
   <input type="radio" name="score1" value="3" /> 3
   <input type="radio" name="score1" value="4" /> 4
   <input type="radio" name="score1" value="5" /> 5</p>
 
-  <p>教学严谨：<input type="radio" name="score2" value="1" /> 1
+  <p style="font-weight:bold; color:red;">教学严谨：<input type="radio" name="score2" value="1" /> 1
   <input type="radio" name="score2" value="2" /> 2
   <input type="radio" name="score2" value="3" /> 3
   <input type="radio" name="score2" value="4" /> 4
   <input type="radio" name="score2" value="5" /> 5</p>
 
-  <p>热情耐心：<input type="radio" name="score3" value="1" /> 1
+  <p style="font-weight:bold;color:red;">热情耐心：<input type="radio" name="score3" value="1" /> 1
   <input type="radio" name="score3" value="2" /> 2
   <input type="radio" name="score3" value="3" /> 3
   <input type="radio" name="score3" value="4" /> 4
@@ -158,9 +158,9 @@
 <input type="hidden" name="tid"  value="<?=$basicInfo['tid']?>"/>
 
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="60" rows="5" style="position: absolute; left:140%; top: 0%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="73" rows="5" style="border:solid 2px;border-color :#00cccc; position: absolute; left:140%; top: 0%; font-size:15px;word-break:break-all;"></textarea>
 
- <button type="image" style="position: absolute; left:370%; top: 70%;" class="btn btn-default">提交</button>
+ <button type="image" style="position: absolute; left:140%; top: 83%; width:610px;height:40px;" class="btn btn-default">提交</button>
 
 </div>
 </form>

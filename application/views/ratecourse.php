@@ -82,7 +82,7 @@
 </table>
 
 <table class="table table-striped table-hover table-condensed" style="position: absolute; left:20%; top: 49% ; word-break:break-all;"  >
-  <tr align=center>
+  <tr align=center style="color:#000000; font-weight: bold; font-size:18px;"> >
     <th style="text-align:center;">编号</th>
     <th style="text-align:center;"> 用户名</th>
     <th style="text-align:center;">学院</th>
@@ -130,9 +130,9 @@
 <input type="hidden" name="score3"  value="0"/>
 <input type="hidden" name="tid"  value="<?=$lesson['lid'] ?>"/>
 
-<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="105" rows="5" style="position: absolute; left:20%; top: 108%; font-size:15px;word-break:break-all;"></textarea>
+<textarea  placeholder="输入评论" name="textArea1" id="textArea1" cols="115" rows="3" style=" border:solid 2px;border-color :#00cccc; position: absolute; left:20%; top: 108%; font-size:15px;word-break:break-all;"></textarea>
 
-<button type="submit" style="position: absolute; left:85%; top: 120%;" class="btn btn-default">提交</button>
+<button type="submit" style="position: absolute; left:19.95%; top: 118%; width:947px;height:40px;" class="btn btn-default">提交</button>
 
 </form>
 
